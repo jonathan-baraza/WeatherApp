@@ -70,7 +70,7 @@ const Tabs = () => {
         name={"city"}
         component={City}
       />
-      <Tab.Screen
+      {/* <Tab.Screen
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
@@ -82,7 +82,7 @@ const Tabs = () => {
         }}
         name={"demo"}
         component={Counter}
-      />
+      /> */}
     </Tab.Navigator>
   );
 };
