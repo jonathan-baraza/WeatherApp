@@ -40,7 +40,7 @@ const Counter = () => {
           <Text style={styles.btnText}>-1</Text>
         </TouchableOpacity>
       </View>
-      <View>
+      <View style={{  alignItems: "center" }}>
         <TextInput
           style={styles.input}
           placeholder="Enter Count"
@@ -54,7 +54,7 @@ const Counter = () => {
           style={styles.btnTwo}
           accessibilityLabel="Learn more about this purple button"
         >
-          <Text style={styles.btnText}>ADD</Text>
+          <Text style={styles.btnTextTwo}>ADD</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -88,8 +88,13 @@ const styles = StyleSheet.create({
     width: 100,
     padding: 10,
     alignItems: "center",
+ 
   },
   btnText: {
+    color: "white",
+    fontSize: 15,
+  },
+  btnTextTwo: {
     color: "white",
     fontSize: 15,
   },
@@ -105,6 +110,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     margin: 20,
+  width:200
   },
 });
 export default Counter;
