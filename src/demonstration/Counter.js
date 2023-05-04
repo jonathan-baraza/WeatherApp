@@ -40,7 +40,7 @@ const Counter = () => {
           <Text style={styles.btnText}>-1</Text>
         </TouchableOpacity>
       </View>
-      <View style={{  alignItems: "center" }}>
+      <View style={{ height:150, alignItems: "center" }}>
         <TextInput
           style={styles.input}
           placeholder="Enter Count"
