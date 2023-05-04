@@ -6,6 +6,7 @@ import { Feather } from "@expo/vector-icons";
 import CurrentWeather from "../screens/CurrentWeather";
 import UpcomingWeather from "../screens/UpcomingWeather";
 import City from "../screens/City";
+import Counter from "../demonstration/Counter";
 const Tab = createBottomTabNavigator();
 
 const Tabs = () => {
@@ -68,6 +69,19 @@ const Tabs = () => {
         }}
         name={"city"}
         component={City}
+      />
+      <Tab.Screen
+        options={{
+          tabBarIcon: ({ focused }) => (
+            <Feather
+              name={"more-vertical"}
+              size={25}
+              color={focused ? "tomato" : "black"}
+            />
+          ),
+        }}
+        name={"demo"}
+        component={Counter}
       />
     </Tab.Navigator>
   );
