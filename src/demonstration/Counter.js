@@ -40,7 +40,7 @@ const Counter = () => {
           <Text style={styles.btnText}>-1</Text>
         </TouchableOpacity>
       </View>
-      <View style={{ height:150, alignItems: "center" }}>
+      <View style={{ height: 150, alignItems: "center" }}>
         <TextInput
           style={styles.input}
           placeholder="Enter Count"
@@ -50,6 +50,7 @@ const Counter = () => {
         <TouchableOpacity
           onPress={() => {
             setCount(countInput);
+            setCountInput();
           }}
           style={styles.btnTwo}
           accessibilityLabel="Learn more about this purple button"
@@ -88,7 +89,6 @@ const styles = StyleSheet.create({
     width: 100,
     padding: 10,
     alignItems: "center",
- 
   },
   btnText: {
     color: "white",
@@ -110,7 +110,7 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 5,
     margin: 20,
-  width:200
+    width: 200,
   },
 });
 export default Counter;
