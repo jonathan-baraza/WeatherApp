@@ -56,8 +56,9 @@ const Tabs = ({ weather }) => {
           ),
         }}
         name={"upcoming"}
-        component={UpcomingWeather}
-      />
+      >
+        {() => <UpcomingWeather weatherData={weather.list} />}
+      </Tab.Screen>
       <Tab.Screen
         options={{
           tabBarIcon: ({ focused }) => (
