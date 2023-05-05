@@ -16,8 +16,6 @@ const CurrentWeather = ({ weatherData }) => {
     message,
   } = styles;
 
-  console.log("weatherData");
-  console.log(weatherData);
   const {
     main: { temp, feels_like, temp_max, temp_min },
     weather,
