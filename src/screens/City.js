@@ -21,6 +21,7 @@ const City = ({ weatherData }) => {
     populationText,
     riseSetText,
     rowLayout,
+    imageLayoutWrapper,
   } = styles;
 
   const { name, country, population, sunrise, sunset } = weatherData;
@@ -31,29 +32,31 @@ const City = ({ weatherData }) => {
         style={imageLayout}
         source={require("../../assets/images/city-background.jpg")}
       >
-        <Text style={[cityName, cityText]}>{name}</Text>
-        <Text style={[countryName, cityText]}>{country}</Text>
-        <View style={[populationWrapper, rowLayout]}>
-          <IconText
-            iconName={"user"}
-            iconColor={"red"}
-            bodyText={`Population: ${population}`}
-            bodyTextStyles={populationText}
-          />
-        </View>
-        <View style={[riseSetWrapper, rowLayout]}>
-          <IconText
-            iconName={"sunrise"}
-            iconColor={"white"}
-            bodyText={moment(sunrise).format("h:mm:ss a")}
-            bodyTextStyles={riseSetText}
-          />
-          <IconText
-            iconName={"sunset"}
-            iconColor={"white"}
-            bodyText={moment(sunset).format("h:mm:ss a")}
-            bodyTextStyles={riseSetText}
-          />
+        <View style={imageLayoutWrapper}>
+          <Text style={[cityName, cityText]}>{name}</Text>
+          <Text style={[countryName, cityText]}>{country}</Text>
+          <View style={[populationWrapper, rowLayout]}>
+            <IconText
+              iconName={"user"}
+              iconColor={"red"}
+              bodyText={`Population: ${population}`}
+              bodyTextStyles={populationText}
+            />
+          </View>
+          <View style={[riseSetWrapper, rowLayout]}>
+            <IconText
+              iconName={"sunrise"}
+              iconColor={"white"}
+              bodyText={moment(sunrise).format("h:mm:ss a")}
+              bodyTextStyles={riseSetText}
+            />
+            <IconText
+              iconName={"sunset"}
+              iconColor={"white"}
+              bodyText={moment(sunset).format("h:mm:ss a")}
+              bodyTextStyles={riseSetText}
+            />
+          </View>
         </View>
       </ImageBackground>
     </SafeAreaView>
@@ -68,11 +71,18 @@ const styles = StyleSheet.create({
   imageLayout: {
     flex: 1,
   },
+  imageLayoutWrapper: {
+    flex: 1,
+    backgroundColor: "rgba(0,0,0,0.5)",
+    justifyContent: "center",
+  },
   cityName: {
     fontSize: 40,
+    marginBottom: 10,
   },
   countryName: {
     fontSize: 30,
+    marginBottom: 20,
   },
   cityText: {
     fontWeight: "bold",
@@ -88,7 +98,7 @@ const styles = StyleSheet.create({
   },
   riseSetWrapper: {
     justifyContent: "space-around",
-    marginTop: 30,
+    marginTop: 50,
   },
   populationText: {
     fontSize: 25,
