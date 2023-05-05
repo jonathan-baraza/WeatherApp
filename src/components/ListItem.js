@@ -13,7 +13,7 @@ const ListItem = (props) => {
   return (
     <View style={item}>
       <Feather
-        name={weatherType[condition[0].main].icon}
+        name={weatherType[condition[0]?.main]?.icon}
         size={50}
         color="white"
       />
@@ -37,7 +37,7 @@ const styles = StyleSheet.create({
     justifyContent: "space-around",
     alignItems: "center",
     borderWidth: 5,
-    backgroundColor: "pink",
+    backgroundColor: "indianred",
   },
   temp: {
     color: "white",
