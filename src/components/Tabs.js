@@ -39,6 +39,7 @@ const Tabs = ({ weather }) => {
               color={focused ? "tomato" : "black"}
             />
           ),
+          title: "Current weather",
         }}
         name={"current"}
       >
@@ -54,6 +55,7 @@ const Tabs = ({ weather }) => {
               color={focused ? "tomato" : "black"}
             />
           ),
+          title: "Upcoming weather",
         }}
         name={"upcoming"}
       >
@@ -70,8 +72,9 @@ const Tabs = ({ weather }) => {
           ),
         }}
         name={"city"}
-        component={City}
-      />
+      >
+        {() => <City weatherData={weather.city} />}
+      </Tab.Screen>
       {/* <Tab.Screen
         options={{
           tabBarIcon: ({ focused }) => (
