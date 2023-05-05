@@ -19,10 +19,10 @@ const App = () => {
 
   return (
     <View style={styles.container}>
-      {loading ? (
-        <ActivityIndicator size={"large"} color={"#007acc"} />
-      ) : (
+      {error ? (
         <ErrorItem />
+      ) : (
+        <ActivityIndicator size={"large"} color={"#007acc"} />
       )}
     </View>
   );
