@@ -3,11 +3,11 @@ import { View, Text, SafeAreaView, StyleSheet, StatusBar } from "react-native";
 import { Feather } from "@expo/vector-icons";
 import RowText from "../components/RowText";
 import { weatherType } from "../utils/weatherType";
-const CurrentWeather = () => {
+const CurrentWeather = ({ weatherData }) => {
   const {
     wrapper,
     container,
-    temp,
+    tempStyle,
     feels,
     highLow,
     highLowWrapper,
@@ -15,11 +15,19 @@ const CurrentWeather = () => {
     description,
     message,
   } = styles;
+
+  console.log("weatherData");
+  console.log(weatherData);
+  const {
+    main: { temp, feels_like, temp_max, temp_min },
+    weather,
+  } = weatherData;
+  const weatherCondition = weather[0].main;
   return (
     <SafeAreaView style={wrapper}>
       <View style={container}>
         <Feather name="sun" size={100} color="black" />
-        <Text style={temp}>6</Text>
+        <Text style={tempStyle}>6</Text>
         <Text style={feels}>Feels like 5</Text>
 
         <RowText
@@ -54,7 +62,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  temp: {
+  tempStyle: {
     color: "black",
     fontSize: 48,
   },
