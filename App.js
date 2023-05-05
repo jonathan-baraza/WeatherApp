@@ -5,30 +5,47 @@ import Tabs from "./src/components/Tabs";
 import * as Location from "expo-location";
 import { WEATHER_API_KEY } from "@env";
 
-// api.openweathermap.org/data/2.5/forecast?lat={lat}&lon={lon}&appid={API key}
-
 const App = () => {
   const [loading, setLoading] = useState(true);
-  const [location, setLocation] = useState(null);
   const [error, setError] = useState(null);
+  const [weather, setWeather] = useState([]);
+
+  const [lat, setLat] = useState([]);
+  const [lon, setLon] = useState([]);
+
+  const fetchWeatherData = async () => {
+    try {
+      console.log("fetching data now");
+      const response = await fetch(
+        `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}`
+      );
+      const data = await response.json();
+      setWeather(data);
+    } catch (error) {
+      setError("Could not fetch weather");
+    } finally {
+      setLoading(false);
+    }
+  };
 
   useEffect(() => {
     (async () => {
       let { status } = await Location.requestForegroundPermissionsAsync();
-
       if (status !== "granted") {
         setError("Permission to access location was denied");
         return;
       }
 
       let location = await Location.getCurrentPositionAsync({});
-      setLocation(location);
+      setLat(location.coords.latitude);
+      setLon(location.coords.longitude);
+      await fetchWeatherData();
     })();
-  }, []);
+  }, [lat, lon]);
 
-  if (location) {
-    console.log("location");
-    console.log(location);
+  if (weather) {
+    console.log("weather data");
+    console.log(weather);
   }
 
   if (loading) {
@@ -38,6 +55,7 @@ const App = () => {
       </View>
     );
   }
+
   return (
     <NavigationContainer>
       <Tabs />
